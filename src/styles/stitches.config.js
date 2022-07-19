@@ -77,6 +77,8 @@ export const globalStyles = globalCss({
     padding: 0,
     boxSizing: "border-box",
     fontFamily: "Raleway, serif",
+  },
+  body: {
     background: "$gray900",
     color: "$gray100",
   },

@@ -16,6 +16,12 @@ export const Profile = styled("div", {
 export const ProfileInfos = styled("div", {
   display: "flex",
   flexDirection: "column",
+  justifyContent: "space-between",
+});
+
+export const ProfileBasicInfos = styled("div", {
+  display: "flex",
+  flexDirection: "column",
 });
 
 export const ProfileName = styled("h1", {
