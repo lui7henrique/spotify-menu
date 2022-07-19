@@ -1,10 +1,12 @@
 import NextAuth from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
+import { spotify } from "services/spotify";
 
 const spotifyClientId = process.env.SPOTIFY_CLIENT_ID;
 const spotifyClientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+const nextAuthSecret = process.env.JWT_SECRET;
 
-export default NextAuth({
+export const authOptions = {
   providers: [
     SpotifyProvider({
       clientId: spotifyClientId,
@@ -12,18 +14,17 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      return true;
-    },
-    async redirect({ url, baseUrl }) {
-      return baseUrl;
-    },
-    async session({ session, user, token }) {
-      return session;
-    },
-    async jwt({ token, user, account, profile, isNewUser }) {
-      return token;
+    async signIn({ account, ...everything }) {
+      const { access_token } = account;
+
+      spotify.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${access_token}`;
+
+      return account;
     },
   },
-  secret: "CARALHO",
-});
+  secret: nextAuthSecret,
+};
+
+export default NextAuth(authOptions);
