@@ -23,7 +23,7 @@ export const ProfileTemplate = () => {
   return (
     <Stitches.Container>
       <Stitches.Sidebar>
-        <Stitches.Profile>
+        {/* <Stitches.Profile>
           <Avatar src={session.user.image} alt={session.user.name} size="lg" />
 
           <Stitches.ProfileInfos>
@@ -34,7 +34,7 @@ export const ProfileTemplate = () => {
               </Stitches.ProfileEmail>
             </Stitches.ProfileBasicInfos>
           </Stitches.ProfileInfos>
-        </Stitches.Profile>
+        </Stitches.Profile> */}
         <Button
           label="Logout"
           onClick={logout}
@@ -42,6 +42,8 @@ export const ProfileTemplate = () => {
           leftIcon={RiLogoutBoxLine}
         />
       </Stitches.Sidebar>
+
+      <Stitches.Main></Stitches.Main>
     </Stitches.Container>
   );
 };

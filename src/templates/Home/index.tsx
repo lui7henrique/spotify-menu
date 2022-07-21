@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 import { useCallback } from "react";
 
 import * as Stitches from "./stitches";
-import { ProfileTemplate } from "templates/Profile";
 
 export const HomeTemplate = () => {
   const { data: session } = useSession();

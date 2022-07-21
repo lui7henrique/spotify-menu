@@ -1,4 +1,5 @@
-import NextAuth from "next-auth";
+import NextAuth, { Session, User } from "next-auth";
+import { JWT } from "next-auth/jwt";
 import SpotifyProvider from "next-auth/providers/spotify";
 import { spotify } from "services/spotify";
 
@@ -6,22 +7,35 @@ const spotifyClientId = process.env.SPOTIFY_CLIENT_ID;
 const spotifyClientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 const nextAuthSecret = process.env.JWT_SECRET;
 
+type FormattedAuth = {
+  user: User;
+  token: string;
+};
+
+type FormattedJWT = {
+  user: User;
+  token: string;
+} & JWT;
+
 export const authOptions = {
   providers: [
     SpotifyProvider({
       clientId: spotifyClientId,
       clientSecret: spotifyClientSecret,
+      authorization:
+        "https://accounts.spotify.com/authorize?scope=user-read-email,playlist-read-private",
     }),
   ],
   callbacks: {
-    async signIn({ account, ...everything }) {
-      const { access_token } = account;
+    async jwt({ token, account }) {
+      if (account) {
+        return {
+          ...token,
+          accessToken: account.access_token,
+        };
+      }
 
-      spotify.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${access_token}`;
-
-      return account;
+      return token;
     },
   },
   secret: nextAuthSecret,

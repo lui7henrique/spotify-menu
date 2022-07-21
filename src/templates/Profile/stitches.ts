@@ -39,3 +39,9 @@ export const ProfileName = styled("h1", {
 export const ProfileEmail = styled("p", {
   fontSize: "$fontSizes$3",
 });
+
+export const Main = styled("main", {
+  width: "100%",
+  height: "3rem",
+  borderBottom: "1px solid $colors$gray800",
+});
