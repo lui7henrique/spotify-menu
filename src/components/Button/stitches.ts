@@ -46,6 +46,6 @@ export const StyledButton = styled("button", {
   alignItems: "center",
   justifyContent: "center",
   "&:hover": {
-    transform: "scale(1.05)",
+    transform: "scale(1.01)",
   },
 });

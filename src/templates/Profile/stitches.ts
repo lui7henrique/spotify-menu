@@ -2,10 +2,18 @@ import { styled } from "@stitches/react";
 
 export const Container = styled("div", {
   display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
   width: "100vw",
   height: "100vh",
+});
+
+export const Sidebar = styled("aside", {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  width: "300px",
+  padding: "1rem",
+  height: "100%",
+  border: "1px solid $colors$gray800",
 });
 
 export const Profile = styled("div", {
