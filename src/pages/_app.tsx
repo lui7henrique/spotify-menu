@@ -1,8 +1,7 @@
 import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
 import { useState } from "react";
-import { ClapSpinner, WaveSpinner } from "react-spinners-kit";
-import styled from "styled-components";
+import { WaveSpinner } from "react-spinners-kit";
 
 import { globalStyles } from "styles/stitches.config";
 
@@ -14,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   if (isLoading) {
     setTimeout(() => {
       setIsLoading((prevIsLoading) => !prevIsLoading);
-    }, 800);
+    }, 1200);
 
     return (
       <main
