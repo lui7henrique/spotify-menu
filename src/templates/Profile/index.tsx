@@ -1,11 +1,15 @@
+import { useCallback, useMemo } from "react";
+import { useRouter } from "next/router";
+import { signOut, useSession } from "next-auth/react";
+
 import { Avatar } from "components/Avatar";
 import { Button } from "components/Button";
-import { signOut, useSession } from "next-auth/react";
+import { Tabs, TabsProps } from "components/Tabs";
 import * as Stitches from "./stitches";
 
-import { RiLogoutBoxLine } from "react-icons/ri";
-import { useCallback } from "react";
-import { useRouter } from "next/router";
+import { FaChartBar } from "react-icons/fa";
+import { RiLogoutBoxLine, RiPlayList2Fill } from "react-icons/ri";
+import { Playlists } from "./Playlists";
 
 export const ProfileTemplate = () => {
   const { data: session } = useSession();
@@ -16,25 +20,61 @@ export const ProfileTemplate = () => {
     await signOut({ redirect: false });
   }, []);
 
-  if (!session) {
-    return <h1>carregando</h1>;
-  }
+  const tabsProps = useMemo((): TabsProps => {
+    return {
+      tabs: [
+        {
+          content: <Playlists />,
+          label: (
+            <>
+              <RiPlayList2Fill size={18} />
+              Playlists
+            </>
+          ),
+          value: "playlists",
+        },
+        {
+          content: <h1>Gráficos</h1>,
+          label: (
+            <>
+              <FaChartBar size={18} />
+              Gráficos
+            </>
+          ),
+          value: "charts",
+        },
+      ],
+      ariaLabel: "Explore your account",
+      defaultValue: "playlists",
+    };
+  }, []);
 
   return (
     <Stitches.Container>
       <Stitches.Sidebar>
-        {/* <Stitches.Profile>
-          <Avatar src={session.user.image} alt={session.user.name} size="lg" />
+        <Stitches.Profile>
+          {session?.user && (
+            <>
+              <Avatar
+                src={session.user.image}
+                alt={session.user.name}
+                size="lg"
+              />
 
-          <Stitches.ProfileInfos>
-            <Stitches.ProfileBasicInfos>
-              <Stitches.ProfileName>{session.user.name}</Stitches.ProfileName>
-              <Stitches.ProfileEmail>
-                {session.user.email}
-              </Stitches.ProfileEmail>
-            </Stitches.ProfileBasicInfos>
-          </Stitches.ProfileInfos>
-        </Stitches.Profile> */}
+              <Stitches.ProfileInfos>
+                <Stitches.ProfileBasicInfos>
+                  <Stitches.ProfileName>
+                    {session.user.name}
+                  </Stitches.ProfileName>
+                  <Stitches.ProfileEmail>
+                    {session.user.email}
+                  </Stitches.ProfileEmail>
+                </Stitches.ProfileBasicInfos>
+              </Stitches.ProfileInfos>
+            </>
+          )}
+        </Stitches.Profile>
+
         <Button
           label="Logout"
           onClick={logout}
@@ -43,7 +83,9 @@ export const ProfileTemplate = () => {
         />
       </Stitches.Sidebar>
 
-      <Stitches.Main></Stitches.Main>
+      <Stitches.Main>
+        <Tabs {...tabsProps} />
+      </Stitches.Main>
     </Stitches.Container>
   );
 };

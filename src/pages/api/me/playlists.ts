@@ -18,7 +18,7 @@ export default async function handler(req, res) {
 
     const { data: playlists } = await spotify.get(
       `https://api.spotify.com/v1/users/${me.id}/playlists`,
-      { params: { limit: 99 } }
+      { params: { limit: 50 } }
     );
 
     return res.status(200).json({ ...playlists });

@@ -13,10 +13,13 @@ export const {
     colors: {
       green400: "#1ed760",
       green500: "#1db954",
+      green600: "#138039",
+      green700: "#0d5928",
 
       gray50: "#FFFFFF",
       gray100: "#B3B3B3",
-      gray800: "#282828",
+      gray700: "#3d3d3d",
+      gray800: "#1f1f1f",
       gray900: "#121212",
     },
     space: {
@@ -66,8 +69,10 @@ export const {
     }),
   },
   media: {
-    bp1: "(min-width: 520px)",
-    bp2: "(min-width: 900px)",
+    bp1: "(max-width: 640px)",
+    bp2: "(max-width: 768px)",
+    bp3: "(max-width: 1024px)",
+    bp4: "(max-width: 1440px)",
   },
 });
 
@@ -84,5 +89,16 @@ export const globalStyles = globalCss({
   },
   "h1, h2, h3, h4, h5, h6": {
     color: "$gray50",
+  },
+  "*::-webkit-scrollbar": {
+    width: "3px",
+  },
+  "*::-webkit-scrollbar-track": {
+    background: "$gray$gray800",
+  },
+  "*::-webkit-scrollbar-thumb": {
+    backgroundColor: "$colors$gray700",
+    borderRadius: "20px",
+    border: "3px solid $colors$gray700",
   },
 });
