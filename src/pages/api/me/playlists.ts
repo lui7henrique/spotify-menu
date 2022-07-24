@@ -9,8 +9,6 @@ const secret = process.env.JWT_SECRET;
 export default async function handler(req, res) {
   const token = await getToken({ req, secret });
 
-  console.log(token);
-
   spotify.defaults.headers.common[
     "Authorization"
   ] = `Bearer ${token.accessToken}`;
@@ -20,13 +18,11 @@ export default async function handler(req, res) {
 
     const { data: playlists } = await spotify.get(
       `https://api.spotify.com/v1/users/${me.id}/playlists`,
-      { params: { limit: 20 } }
+      { params: { limit: 99 } }
     );
 
     return res.status(200).json({ ...playlists });
   } catch (err) {
     return res.status(404).json({ err });
   }
-
-  res.status(200).json({ name: "John Doe" });
 }
