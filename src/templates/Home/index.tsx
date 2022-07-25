@@ -7,8 +7,6 @@ import { FiHeadphones } from "react-icons/fi";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 
-import * as Stitches from "./stitches";
-
 export const HomeTemplate = () => {
   const { data: session } = useSession();
   const { push } = useRouter();
@@ -19,25 +17,15 @@ export const HomeTemplate = () => {
 
   if (!session) {
     return (
-      <Stitches.Container>
-        <Button
-          label="Login w/ Spotify"
-          size="lg"
-          onClick={login}
-          leftIcon={SiSpotify}
-        />
-      </Stitches.Container>
+      <div>
+        <button onClick={login}>Login w/ Spotify</button>
+      </div>
     );
   }
 
   return (
-    <Stitches.Container>
-      <Button
-        label="Ver meu perfil"
-        size="lg"
-        onClick={() => push("/profile")}
-        leftIcon={FiHeadphones}
-      />
-    </Stitches.Container>
+    <div>
+      <button onClick={() => push("/profile")}>Ver meu perfil</button>
+    </div>
   );
 };

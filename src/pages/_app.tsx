@@ -1,43 +1,19 @@
 import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
-import { useState } from "react";
-import { WaveSpinner } from "react-spinners-kit";
+import { ThemeProvider } from "styled-components";
 
-import { globalStyles } from "styles/stitches.config";
+import { GlobalStyles } from "styles/global";
+import theme from "styles/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [isLoading, setIsLoading] = useState(true);
-
-  globalStyles();
-
-  if (isLoading) {
-    setTimeout(() => {
-      setIsLoading((prevIsLoading) => !prevIsLoading);
-    }, 1200);
-
-    return (
-      <main
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100vh",
-          width: "100vw",
-          backgroundColor: "#121212",
-        }}
-      >
-        <WaveSpinner color="#1ed760" size={50} />
-      </main>
-    );
-  }
-
-  if (!isLoading) {
-    return (
-      <SessionProvider>
-        <Component {...pageProps} />{" "}
-      </SessionProvider>
-    );
-  }
+  return (
+    <SessionProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </SessionProvider>
+  );
 }
 
 export default MyApp;

@@ -2,14 +2,13 @@ import { useCallback, useMemo } from "react";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 
-import { Avatar } from "components/Avatar";
-import { Button } from "components/Button";
-import { Tabs, TabsProps } from "components/Tabs";
-import * as Stitches from "./stitches";
+import { Logo } from "components/Logo";
 
 import { FaChartBar } from "react-icons/fa";
-import { RiLogoutBoxLine, RiPlayList2Fill } from "react-icons/ri";
+import { RiPlayList2Fill } from "react-icons/ri";
 import { Playlists } from "./Playlists";
+
+import * as S from "./styles";
 
 export const ProfileTemplate = () => {
   const { data: session } = useSession();
@@ -20,72 +19,28 @@ export const ProfileTemplate = () => {
     await signOut({ redirect: false });
   }, []);
 
-  const tabsProps = useMemo((): TabsProps => {
-    return {
-      tabs: [
-        {
-          content: <Playlists />,
-          label: (
-            <>
-              <RiPlayList2Fill size={18} />
-              Playlists
-            </>
-          ),
-          value: "playlists",
-        },
-        {
-          content: <h1>Gráficos</h1>,
-          label: (
-            <>
-              <FaChartBar size={18} />
-              Gráficos
-            </>
-          ),
-          value: "charts",
-        },
-      ],
-      ariaLabel: "Explore your account",
-      defaultValue: "playlists",
-    };
-  }, []);
-
   return (
-    <Stitches.Container>
-      <Stitches.Main>
-        <Tabs {...tabsProps} />
-      </Stitches.Main>
+    <S.Container>
+      <S.Main>
+        <S.Header>
+          <Logo />
 
-      <Stitches.Sidebar>
-        <Stitches.Profile>
-          {session?.user && (
-            <>
-              <Avatar
-                src={session.user.image}
-                alt={session.user.name}
-                size="lg"
-              />
+          <S.Profile>
+            {session?.user && (
+              <>
+                <S.ProfileInfos>
+                  <S.ProfileBasicInfos>
+                    <S.ProfileName>{session.user.name}</S.ProfileName>
+                    <S.ProfileEmail>{session.user.email}</S.ProfileEmail>
+                  </S.ProfileBasicInfos>
+                </S.ProfileInfos>
+              </>
+            )}
+          </S.Profile>
+        </S.Header>
+      </S.Main>
 
-              <Stitches.ProfileInfos>
-                <Stitches.ProfileBasicInfos>
-                  <Stitches.ProfileName>
-                    {session.user.name}
-                  </Stitches.ProfileName>
-                  <Stitches.ProfileEmail>
-                    {session.user.email}
-                  </Stitches.ProfileEmail>
-                </Stitches.ProfileBasicInfos>
-              </Stitches.ProfileInfos>
-            </>
-          )}
-        </Stitches.Profile>
-
-        <Button
-          label="Logout"
-          onClick={logout}
-          size="md"
-          leftIcon={RiLogoutBoxLine}
-        />
-      </Stitches.Sidebar>
-    </Stitches.Container>
+      <S.Sidebar></S.Sidebar>
+    </S.Container>
   );
 };
