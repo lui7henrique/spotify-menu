@@ -51,6 +51,10 @@ export const ProfileTemplate = () => {
 
   return (
     <Stitches.Container>
+      <Stitches.Main>
+        <Tabs {...tabsProps} />
+      </Stitches.Main>
+
       <Stitches.Sidebar>
         <Stitches.Profile>
           {session?.user && (
@@ -82,10 +86,6 @@ export const ProfileTemplate = () => {
           leftIcon={RiLogoutBoxLine}
         />
       </Stitches.Sidebar>
-
-      <Stitches.Main>
-        <Tabs {...tabsProps} />
-      </Stitches.Main>
     </Stitches.Container>
   );
 };

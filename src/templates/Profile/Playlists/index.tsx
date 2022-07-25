@@ -1,6 +1,6 @@
 import { useFetch } from "hooks/useFetch";
 import { GetPlaylists } from "types/getPlaylists";
-import * as Stitches from "./stiches";
+import * as S from "./stiches";
 
 export const Playlists = () => {
   const { data } = useFetch<GetPlaylists>("/me/playlists");
@@ -10,20 +10,18 @@ export const Playlists = () => {
   }
 
   return (
-    <Stitches.PlaylistsListContainer>
-      <Stitches.PlaylistsTitle>User playlists</Stitches.PlaylistsTitle>
-      <Stitches.PlaylistsList>
+    <S.PlaylistsListContainer>
+      <S.PlaylistsTitle>User playlists</S.PlaylistsTitle>
+
+      <S.PlaylistsList>
         {data.items.map((playlist) => {
           return (
-            <Stitches.Playlist>
-              <Stitches.PlaylistImageWrapper>
-                <Stitches.PlaylistImage
-                  src={playlist.images[0].url}
-                  layout="fill"
-                />
-              </Stitches.PlaylistImageWrapper>
+            <S.Playlist>
+              <S.PlaylistImageWrapper>
+                <S.PlaylistImage src={playlist.images[0].url} layout="fill" />
+              </S.PlaylistImageWrapper>
 
-              <Stitches.PlaylistName
+              <S.PlaylistName
                 style={{
                   WebkitLineClamp: 1,
                   textOverflow: "ellipsis",
@@ -33,11 +31,11 @@ export const Playlists = () => {
                 }}
               >
                 {playlist.name}
-              </Stitches.PlaylistName>
-            </Stitches.Playlist>
+              </S.PlaylistName>
+            </S.Playlist>
           );
         })}
-      </Stitches.PlaylistsList>
-    </Stitches.PlaylistsListContainer>
+      </S.PlaylistsList>
+    </S.PlaylistsListContainer>
   );
 };

@@ -69,10 +69,15 @@ export const {
     }),
   },
   media: {
-    bp1: "(max-width: 640px)",
-    bp2: "(max-width: 768px)",
-    bp3: "(max-width: 1024px)",
-    bp4: "(max-width: 1440px)",
+    // sm: (rule) => `@media (max-width: 512px) { ${rule} }`,
+    // md: (rule) => `@media (max-width: 768px) { ${rule} }`,
+    // lg: (rule) => `@media (max-width: 1024px) { ${rule} }`,
+    // xl: (rule) => `@media (max-width: 1440px) { ${rule} }`,
+
+    sm: "(width < 720px)",
+    md: "(720px <= width < 1024px)",
+    lg: "(1024px <= width < 1536px)",
+    xl: "(1536px <= width)",
   },
 });
 

@@ -16,8 +16,8 @@ export const PlaylistsTitle = stitches("h1", {
 export const PlaylistsList = styled.div`
   grid-template-columns: repeat(7, 1fr);
   display: grid;
-  gap: 16px;
-  padding: 20;
+  gap: 24px;
+  padding: 20px;
 
   @media (max-width: 1440px) {
     grid-template-columns: repeat(5, 1fr);
@@ -78,4 +78,4 @@ export const PlaylistName = stitches(TruncatedText, {
   fontSize: "0.9rem",
 });
 
-export const PlaylistMusicsAccount = stitches("p", {});
+export const PlaylistFollowersAmount = stitches("p", {});
