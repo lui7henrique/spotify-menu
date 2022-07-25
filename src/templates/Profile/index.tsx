@@ -4,11 +4,10 @@ import { signOut, useSession } from "next-auth/react";
 
 import { Logo } from "components/Logo";
 
-import { FaChartBar } from "react-icons/fa";
-import { RiPlayList2Fill } from "react-icons/ri";
-import { Playlists } from "./Playlists";
+import { RiLogoutBoxLine } from "react-icons/ri";
 
 import * as S from "./styles";
+import { Avatar } from "components/Avatar";
 
 export const ProfileTemplate = () => {
   const { data: session } = useSession();
@@ -34,6 +33,16 @@ export const ProfileTemplate = () => {
                     <S.ProfileEmail>{session.user.email}</S.ProfileEmail>
                   </S.ProfileBasicInfos>
                 </S.ProfileInfos>
+
+                <Avatar
+                  src={session.user.image}
+                  iconButton={{
+                    icon: RiLogoutBoxLine,
+                    onClick: logout,
+                    position: "left-bottom",
+                    tooltip: "oi",
+                  }}
+                />
               </>
             )}
           </S.Profile>

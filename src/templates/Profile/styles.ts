@@ -13,6 +13,8 @@ export const Header = styled.header`
 
   height: ${({ theme }) => theme.components.header.height};
 
+  padding: ${({ theme }) => theme.space[8]};
+
   border-bottom-color: ${({ theme }) => theme.colors.gray800};
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -59,7 +61,12 @@ export const ProfileName = styled.h1`
 `;
 
 export const ProfileEmail = styled.p`
-  font-size: 16px;
+  font-size: 14px;
+`;
+
+export const ProfileLogout = styled.sub`
+  font-size: 12px;
+  margin-top: 10px;
 `;
 
 export const Main = styled.div`

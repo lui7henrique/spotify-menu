@@ -14,7 +14,7 @@ export default {
   },
   components: {
     header: {
-      height: "4rem",
+      height: "6rem",
     },
   },
   fontSizes: {
