@@ -87,3 +87,5 @@ export const PlaylistName = styled.h2`
     max-width: 100px;
   } ;
 `;
+
+export const PlaylistOwner = styled.sub``;

@@ -24,6 +24,8 @@ export const Playlists = () => {
               <S.PlaylistNameContainer>
                 <S.PlaylistName>{playlist.name}</S.PlaylistName>
               </S.PlaylistNameContainer>
+
+              <S.PlaylistOwner>{playlist.owner.display_name}</S.PlaylistOwner>
             </S.Playlist>
           );
         })}

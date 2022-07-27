@@ -54,6 +54,10 @@ export const ProfileBasicInfos = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints["md"]}) {
+    display: none;
+  }
 `;
 
 export const ProfileName = styled.h1`

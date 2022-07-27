@@ -1,8 +1,5 @@
-import { unstable_getServerSession } from "next-auth";
 import { getToken } from "next-auth/jwt";
-import { NextRequest } from "next/server";
 import { spotify } from "services/spotify";
-import { authOptions } from "../auth/[...nextauth]";
 
 const secret = process.env.JWT_SECRET;
 
