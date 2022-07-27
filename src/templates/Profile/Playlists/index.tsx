@@ -20,22 +20,11 @@ export const Playlists = () => {
               <S.PlaylistImageWrapper>
                 <S.PlaylistImage src={playlist.images[0].url} layout="fill" />
               </S.PlaylistImageWrapper>
-            </S.Playlist>
-            //
-            //
 
-            //   <S.PlaylistName
-            //     style={{
-            //       WebkitLineClamp: 1,
-            //       textOverflow: "ellipsis",
-            //       WebkitBoxOrient: "vertical",
-            //       display: "webkit-box",
-            //       overflow: "hidden",
-            //     }}
-            //   >
-            //     {playlist.name}
-            //   </S.PlaylistName>
-            // </S.Playlist>
+              <S.PlaylistNameContainer>
+                <S.PlaylistName>{playlist.name}</S.PlaylistName>
+              </S.PlaylistNameContainer>
+            </S.Playlist>
           );
         })}
       </S.Playlists>
