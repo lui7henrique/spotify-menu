@@ -7,6 +7,9 @@ export const Container = styled.main`
   gap: ${({ theme }) => theme.space[6]};
 
   padding: ${({ theme }) => theme.space[4]};
+
+  height: ${({ theme }) => theme.components.main.height};
+  overflow-y: auto;
 `;
 
 export const Title = styled.h1``;
@@ -27,6 +30,8 @@ export const Playlist = styled.div`
 
   padding: ${({ theme }) => theme.space[4]};
   border-radius: 4px;
+
+  cursor: pointer;
 `;
 
 export const PlaylistImageWrapper = styled.figure`

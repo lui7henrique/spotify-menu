@@ -16,6 +16,9 @@ export default {
     header: {
       height: "6rem",
     },
+    main: {
+      height: "calc(100vh - 6rem)",
+    },
   },
   fontSizes: {
     xs: "0.75rem",
