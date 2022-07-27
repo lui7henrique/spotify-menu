@@ -16,11 +16,13 @@ export const Playlists = () => {
       <S.Playlists>
         {data.items.map((playlist) => {
           return (
-            <S.Playlist></S.Playlist>
+            <S.Playlist>
+              <S.PlaylistImageWrapper>
+                <S.PlaylistImage src={playlist.images[0].url} layout="fill" />
+              </S.PlaylistImageWrapper>
+            </S.Playlist>
             //
-            //   <S.PlaylistImageWrapper>
-            //     <S.PlaylistImage src={playlist.images[0].url} layout="fill" />
-            //   </S.PlaylistImageWrapper>
+            //
 
             //   <S.PlaylistName
             //     style={{
