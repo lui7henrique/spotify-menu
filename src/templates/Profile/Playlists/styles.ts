@@ -26,6 +26,7 @@ export const Playlist = styled.div`
   background-color: ${({ theme }) => theme.colors.gray800};
 
   padding: ${({ theme }) => theme.space[4]};
+  border-radius: 4px;
 `;
 
 export const PlaylistImageWrapper = styled.figure`
@@ -33,6 +34,9 @@ export const PlaylistImageWrapper = styled.figure`
   aspect-ratio: 1/1;
 
   position: relative; // to next image
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
 `;
 
 export const PlaylistImage = styled(Image)`
