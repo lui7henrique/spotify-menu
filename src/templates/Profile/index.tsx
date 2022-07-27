@@ -8,6 +8,7 @@ import { RiLogoutBoxLine } from "react-icons/ri";
 
 import * as S from "./styles";
 import { Avatar } from "components/Avatar";
+import { Playlists } from "./Playlists";
 
 export const ProfileTemplate = () => {
   const { data: session } = useSession();
@@ -47,6 +48,8 @@ export const ProfileTemplate = () => {
             )}
           </S.Profile>
         </S.Header>
+
+        <Playlists />
       </S.Main>
 
       <S.Sidebar></S.Sidebar>

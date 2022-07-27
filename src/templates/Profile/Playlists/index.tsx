@@ -1,6 +1,6 @@
 import { useFetch } from "hooks/useFetch";
 import { GetPlaylists } from "types/getPlaylists";
-import * as S from "./stiches";
+import * as S from "./styles";
 
 export const Playlists = () => {
   const { data } = useFetch<GetPlaylists>("/me/playlists");
@@ -10,32 +10,33 @@ export const Playlists = () => {
   }
 
   return (
-    <S.PlaylistsListContainer>
-      <S.PlaylistsTitle>User playlists</S.PlaylistsTitle>
+    <S.Container>
+      <S.Title>User playlists</S.Title>
 
-      <S.PlaylistsList>
+      <S.Playlists>
         {data.items.map((playlist) => {
           return (
-            <S.Playlist>
-              <S.PlaylistImageWrapper>
-                <S.PlaylistImage src={playlist.images[0].url} layout="fill" />
-              </S.PlaylistImageWrapper>
+            <></>
+            // <S.Playlist>
+            //   <S.PlaylistImageWrapper>
+            //     <S.PlaylistImage src={playlist.images[0].url} layout="fill" />
+            //   </S.PlaylistImageWrapper>
 
-              <S.PlaylistName
-                style={{
-                  WebkitLineClamp: 1,
-                  textOverflow: "ellipsis",
-                  WebkitBoxOrient: "vertical",
-                  display: "webkit-box",
-                  overflow: "hidden",
-                }}
-              >
-                {playlist.name}
-              </S.PlaylistName>
-            </S.Playlist>
+            //   <S.PlaylistName
+            //     style={{
+            //       WebkitLineClamp: 1,
+            //       textOverflow: "ellipsis",
+            //       WebkitBoxOrient: "vertical",
+            //       display: "webkit-box",
+            //       overflow: "hidden",
+            //     }}
+            //   >
+            //     {playlist.name}
+            //   </S.PlaylistName>
+            // </S.Playlist>
           );
         })}
-      </S.PlaylistsList>
-    </S.PlaylistsListContainer>
+      </S.Playlists>
+    </S.Container>
   );
 };
