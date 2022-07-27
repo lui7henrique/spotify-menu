@@ -1,6 +1,5 @@
 import Image from "next/image";
 import styled from "styled-components";
-import theme from "styles/theme";
 
 export const Container = styled.main`
   display: flex;
@@ -8,9 +7,6 @@ export const Container = styled.main`
   gap: ${({ theme }) => theme.space[6]};
 
   padding: ${({ theme }) => theme.space[4]};
-
-  height: ${({ theme }) => theme.components.main.height};
-  overflow-y: auto;
 `;
 
 export const Title = styled.h1``;
@@ -33,7 +29,7 @@ export const Playlists = styled.div`
   }
 `;
 
-export const Playlist = styled.div`
+export const Playlist = styled.a`
   width: 100%;
 
   display: flex;

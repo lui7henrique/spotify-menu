@@ -1,3 +1,5 @@
+import { Pagination } from "./pagination";
+
 export type Playlist = {
   collaborative: boolean;
   description: string;
@@ -35,12 +37,4 @@ export type Playlist = {
   uri: string;
 };
 
-export type GetPlaylists = {
-  href: "https://api.spotify.com/v1/users/227kkiv66iygg2sso6cyciroa/playlists?offset=0&limit=50";
-  items: Playlist[];
-  limit: number;
-  next?: string;
-  offset: number;
-  previous?: string;
-  total: number;
-};
+export type GetPlaylists = Pagination<Playlist>;
