@@ -6,10 +6,12 @@ export const Container = styled.main`
   flex-direction: column;
   gap: ${({ theme }) => theme.space[6]};
 
-  padding: ${({ theme }) => theme.space[4]};
+  padding: ${({ theme }) => theme.space[8]};
 `;
 
-export const Title = styled.h1``;
+export const Title = styled.h1`
+  font-size: ${({ theme }) => theme.fontSizes["lg"]};
+`;
 
 export const Playlists = styled.div`
   display: grid;

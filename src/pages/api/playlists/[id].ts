@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getToken } from "next-auth/jwt";
-import { NextRequest } from "next/server";
 import { spotify } from "services/spotify";
 
 const secret = process.env.JWT_SECRET;

@@ -1,6 +1,6 @@
 import { Pagination } from "./pagination";
 
-export type Playlist = {
+export type PlaylistItem = {
   collaborative: boolean;
   description: string;
   external_urls: {
@@ -37,4 +37,4 @@ export type Playlist = {
   uri: string;
 };
 
-export type GetPlaylists = Pagination<Playlist>;
+export type GetPlaylists = Pagination<PlaylistItem>;

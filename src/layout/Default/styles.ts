@@ -19,7 +19,7 @@ export const Header = styled.header`
   border-bottom-width: 1px;
   border-bottom-style: solid;
 
-  padding: ${({ theme }) => theme.space[4]};
+  padding: ${({ theme }) => theme.space[8]};
 `;
 
 export const Sidebar = styled.aside`

@@ -16,11 +16,12 @@ export default function PlaylistPage(props: PlaylistProps) {
 
 import { withAuth } from "utils/withAuth";
 import { spotify } from "services/spotify";
+import { GetPlaylist } from "types/getPlaylist";
 
 export const getServerSideProps: GetServerSideProps = withAuth(async (ctx) => {
   const { id } = ctx.params;
 
-  const { data } = await spotify.get(`/playlists/${id}`);
+  const { data } = await spotify.get<GetPlaylist>(`/playlists/${id}`);
 
   return {
     props: {
