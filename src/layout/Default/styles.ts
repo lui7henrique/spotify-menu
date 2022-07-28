@@ -26,7 +26,7 @@ export const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 30%;
+  min-width: 400px;
   padding: 1rem;
   height: 100%;
 

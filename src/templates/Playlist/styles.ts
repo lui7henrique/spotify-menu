@@ -3,6 +3,14 @@ import Image from "next/image";
 
 export const Container = styled.div``;
 
+/*
+|-----------------------------------------------------------------------------
+| Component
+|-----------------------------------------------------------------------------
+|
+|
+*/
+
 export const Header = styled.div`
   display: flex;
   align-items: flex-end;
@@ -14,6 +22,14 @@ export const Header = styled.div`
 
   background: ${({ theme }) => theme.colors.gray1000};
 `;
+
+/*
+|-----------------------------------------------------------------------------
+| Playlist
+|-----------------------------------------------------------------------------
+|
+|
+*/
 
 export const PlaylistImageWrapper = styled.figure`
   width: 20%;
@@ -51,6 +67,14 @@ export const Title = styled.h1`
 
 export const Description = styled.p``;
 
+/*
+|-----------------------------------------------------------------------------
+| PlayButton
+|-----------------------------------------------------------------------------
+|
+|
+*/
+
 export const PlayButton = styled.button`
   background-color: ${({ theme }) => theme.colors.green500};
 
@@ -68,7 +92,21 @@ export const PlayButton = styled.button`
   outline: none;
 
   cursor: pointer;
+
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.green600};
+  }
 `;
+
+/*
+|-----------------------------------------------------------------------------
+| Tracks
+|-----------------------------------------------------------------------------
+|
+|
+*/
 
 export const TracksHeader = styled.div`
   width: 100%;
@@ -90,6 +128,14 @@ export const TrackHeaderInfo = styled.sub`
   text-transform: uppercase;
 `;
 
+/*
+|-----------------------------------------------------------------------------
+| Track
+|-----------------------------------------------------------------------------
+|
+|
+*/
+
 export const Track = styled.div`
   display: flex;
   align-items: center;
@@ -98,9 +144,36 @@ export const Track = styled.div`
   padding: ${({ theme }) => theme.space[3]};
 
   border-radius: 4px;
+  transition: all 0.1s ease-in-out;
 
   &:hover {
     background-color: hsla(0, 0%, 100%, 0.1);
+  }
+
+  &:hover {
+    .track_index {
+      display: none;
+    }
+
+    .track_play {
+      display: flex;
+    }
+  }
+`;
+
+export const TrackIndex = styled.h3`
+  width: 2%;
+
+  font-weight: 300;
+  font-size: ${({ theme }) => theme.fontSizes["md"]};
+`;
+
+export const TrackPlay = styled.div`
+  width: 2%;
+  cursor: pointer;
+
+  &.track_play {
+    display: none;
   }
 `;
 
@@ -139,11 +212,6 @@ export const TrackName = styled.h2`
 export const TrackArtist = styled.sub`
   font-size: ${({ theme }) => theme.fontSizes["sm"]};
   font-weight: 400;
-`;
-
-export const TrackIndex = styled.h3`
-  font-weight: 300;
-  font-size: ${({ theme }) => theme.fontSizes["md"]};
 `;
 
 export const TrackAlbum = styled.div`

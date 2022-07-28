@@ -37,7 +37,10 @@ export const PlaylistTemplate = (props: PlaylistTemplateProps) => {
       <S.Playlist>
         <S.TracksHeader>
           <S.TrackBaseInfos>
-            <S.TrackHeaderInfo>#</S.TrackHeaderInfo>
+            <S.TrackPlay>
+              <S.TrackHeaderInfo>#</S.TrackHeaderInfo>
+            </S.TrackPlay>
+
             <S.TrackHeaderInfo>Title</S.TrackHeaderInfo>
           </S.TrackBaseInfos>
           <S.TrackAlbum>
@@ -62,7 +65,12 @@ export const PlaylistTemplate = (props: PlaylistTemplateProps) => {
           return (
             <S.Track>
               <S.TrackBaseInfos>
-                <S.TrackIndex>{index + 1}</S.TrackIndex>
+                <S.TrackIndex className="track_index">{index + 1}</S.TrackIndex>
+
+                <S.TrackPlay className="track_play">
+                  <FaPlay size={20} color="#FFF" />
+                </S.TrackPlay>
+
                 <S.TrackImageWrapper>
                   <S.TrackImage src={album.images[0].url} layout="fill" />
                 </S.TrackImageWrapper>
