@@ -1,26 +1,21 @@
-import { LayoutDefault } from "layout/Default";
 import { GetServerSideProps } from "next";
-import { getToken } from "next-auth/jwt";
-import { api } from "services/api";
-import { spotify } from "services/spotify";
-import { PlaylistTemplate } from "templates/Playlist";
-import { Playlist } from "types/getPlaylists";
-import { withAuth } from "utils/withAuth";
+import { LayoutDefault } from "layout/Default";
+import { PlaylistTemplate, PlaylistTemplateProps } from "templates/Playlist";
 
-type PlaylistProps = {
-  playlist: Playlist;
-};
+type PlaylistProps = PlaylistTemplateProps;
 
 export default function PlaylistPage(props: PlaylistProps) {
-  const { playlist } = props;
-  console.log(playlist);
-
   return (
     <LayoutDefault>
-      <PlaylistTemplate />
+      <PlaylistTemplate {...props} />
     </LayoutDefault>
   );
 }
+
+// |---> SERVER SIDE
+
+import { withAuth } from "utils/withAuth";
+import { spotify } from "services/spotify";
 
 export const getServerSideProps: GetServerSideProps = withAuth(async (ctx) => {
   const { id } = ctx.params;
