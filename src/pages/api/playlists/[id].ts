@@ -1,9 +1,14 @@
+import { NextApiRequest, NextApiResponse } from "next";
 import { getToken } from "next-auth/jwt";
+import { NextRequest } from "next/server";
 import { spotify } from "services/spotify";
 
 const secret = process.env.JWT_SECRET;
 
-export default async function handler(req, res) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const { id } = req.query;
 
   const token = await getToken({ req, secret });

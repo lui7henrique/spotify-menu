@@ -17,7 +17,7 @@ export const Playlists = () => {
       <S.Playlists>
         {data.items.map((playlist) => {
           return (
-            <Link href={`/profile/playlist/${playlist.id}`} passHref>
+            <Link href={`/playlist/${playlist.id}`} passHref>
               <S.Playlist>
                 <S.PlaylistImageWrapper>
                   <S.PlaylistImage src={playlist.images[0].url} layout="fill" />
