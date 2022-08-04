@@ -18,7 +18,7 @@ export const HomeTemplate = () => {
   if (!session) {
     return (
       <div>
-        <button onClick={login}>Login w/ Spotify</button>
+        <Button onClick={login} label="Login w/ Spotify" />
       </div>
     );
   }
