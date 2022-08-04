@@ -1,5 +1,6 @@
 import { useFetch } from "hooks/useFetch";
 import Link from "next/link";
+import { WaveSpinner } from "react-spinners-kit";
 import { GetPlaylists } from "types/getPlaylists";
 import * as S from "./styles";
 
@@ -7,7 +8,11 @@ export const Playlists = () => {
   const { data } = useFetch<GetPlaylists>("/me/playlists");
 
   if (!data) {
-    return <h1>carregando...</h1>;
+    return (
+      <S.LoadingContainer>
+        <WaveSpinner color="#1ed760" />
+      </S.LoadingContainer>
+    );
   }
 
   return (

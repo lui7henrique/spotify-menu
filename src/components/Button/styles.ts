@@ -10,6 +10,11 @@ export const ButtonContainer = styled.button<Omit<ButtonProps, "label">>`
 
   transition: all 0.2s ease-in-out;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: ${({ theme }) => theme.space[2]};
+
   ${({ variant }) =>
     variant === "primary" &&
     css`

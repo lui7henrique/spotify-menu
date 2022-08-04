@@ -1,6 +1,14 @@
 import Image from "next/image";
 import styled from "styled-components";
 
+export const LoadingContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+`;
+
 export const Container = styled.main`
   display: flex;
   flex-direction: column;
