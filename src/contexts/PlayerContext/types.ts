@@ -27,6 +27,6 @@ export type PlayerAction = {
   type: PlayerActionType;
   payload?: {
     track?: Track;
-    duration: number;
+    duration?: number;
   };
 };
