@@ -1,3 +1,4 @@
+import { PlayerContextProvider } from "contexts/PlayerContext";
 import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
 import NextNProgress from "nextjs-progressbar";
@@ -8,21 +9,23 @@ import theme from "styles/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <SessionProvider>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
+    <PlayerContextProvider>
+      <SessionProvider>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
 
-        <NextNProgress
-          color="#1ed760"
-          startPosition={0.3}
-          stopDelayMs={200}
-          height={4}
-          showOnShallow={true}
-        />
+          <NextNProgress
+            color="#1ed760"
+            startPosition={0.3}
+            stopDelayMs={200}
+            height={4}
+            showOnShallow={true}
+          />
 
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </SessionProvider>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </SessionProvider>
+    </PlayerContextProvider>
   );
 }
 

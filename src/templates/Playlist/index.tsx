@@ -4,6 +4,8 @@ import { format } from "date-fns";
 import * as S from "./styles";
 import { millisToMinutesAndSeconds } from "utils/millisToMinutesAndSeconds";
 import { FaPlay } from "react-icons/fa";
+import { MdPlayArrow } from "react-icons/md";
+import { usePlayer } from "contexts/PlayerContext";
 
 export type PlaylistTemplateProps = {
   playlist: Playlist;
@@ -11,6 +13,8 @@ export type PlaylistTemplateProps = {
 
 export const PlaylistTemplate = (props: PlaylistTemplateProps) => {
   const { playlist } = props;
+
+  const { dispatch } = usePlayer();
 
   return (
     <S.Container>
@@ -31,7 +35,7 @@ export const PlaylistTemplate = (props: PlaylistTemplateProps) => {
       </S.Header>
 
       <S.PlayButton>
-        <FaPlay size={20} />
+        <MdPlayArrow size={32} />
       </S.PlayButton>
 
       <S.Playlist>
@@ -67,7 +71,15 @@ export const PlaylistTemplate = (props: PlaylistTemplateProps) => {
               <S.TrackBaseInfos>
                 <S.TrackIndex className="track_index">{index + 1}</S.TrackIndex>
 
-                <S.TrackPlay className="track_play">
+                <S.TrackPlay
+                  className="track_play"
+                  onClick={() =>
+                    dispatch({
+                      type: "CHANGE_TRACK",
+                      payload: { track: item.track },
+                    })
+                  }
+                >
                   <FaPlay size={20} color="#FFF" />
                 </S.TrackPlay>
 

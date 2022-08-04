@@ -1,5 +1,6 @@
 import { Avatar } from "components/Avatar";
 import { Logo } from "components/Logo";
+import { Sidebar } from "components/Sidebar";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { ReactNode, useCallback } from "react";
@@ -55,7 +56,7 @@ export const LayoutDefault = (props: LayoutDefaultProps) => {
         <S.Content>{children}</S.Content>
       </S.Main>
 
-      <S.Sidebar></S.Sidebar>
+      <Sidebar />
     </S.Container>
   );
 };

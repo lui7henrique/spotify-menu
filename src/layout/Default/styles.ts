@@ -22,22 +22,6 @@ export const Header = styled.header`
   padding: ${({ theme }) => theme.space[8]};
 `;
 
-export const Sidebar = styled.aside`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 400px;
-  padding: 1rem;
-  height: 100%;
-
-  border-left-color: ${({ theme }) => theme.colors.gray800};
-
-  background-color: ${({ theme }) => theme.colors.gray1000};
-
-  border-left-width: 1px;
-  border-left-style: solid;
-`;
-
 export const Profile = styled.div`
   display: flex;
   align-items: center;
