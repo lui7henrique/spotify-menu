@@ -51,7 +51,7 @@ export const TrackIndex = styled.sub`
 `;
 
 export const TrackButton = styled.div<{
-  isDisabled: boolean;
+  isDisabled?: boolean;
 }>`
   width: 5%;
   cursor: pointer;
