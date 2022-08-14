@@ -1,23 +1,17 @@
+import { useTheme } from "styled-components";
+
 import { usePlayer } from "contexts/PlayerContext";
 import { FaHeadphones } from "react-icons/fa";
-import {
-  MdOutlineRepeat,
-  MdPause,
-  MdPlayArrow,
-  MdShuffle,
-  MdSkipNext,
-  MdSkipPrevious,
-} from "react-icons/md";
 
-import { useTheme } from "styled-components";
-import { convertDurationToTimeString } from "utils/secondsToMinutes";
+import { SidebarFooter } from "../SidebarFooter";
+
 import * as S from "./styles";
 
 export const Sidebar = () => {
   const { colors } = useTheme();
 
-  const { currentPlayer, dispatch } = usePlayer();
-  const { duration, track, isPlaying } = currentPlayer;
+  const { currentPlayer } = usePlayer();
+  const { track } = currentPlayer;
 
   return (
     <>
@@ -56,52 +50,7 @@ export const Sidebar = () => {
           </S.SidebarContentTrack>
         </S.SidebarContent>
 
-        <S.SidebarFooter>
-          <S.SidebarFooterTrackController>
-            <S.SidebarFooterTrackTime>00:00</S.SidebarFooterTrackTime>
-            <S.SidebarFooterTrackTimer>
-              <S.SidebarFooterTrackTimerFilled>
-                <S.SidebarFooterTrackTimerFilledController />
-              </S.SidebarFooterTrackTimerFilled>
-            </S.SidebarFooterTrackTimer>
-
-            <S.SidebarFooterTrackTime>
-              {duration ? convertDurationToTimeString(duration) : "00:00"}
-            </S.SidebarFooterTrackTime>
-          </S.SidebarFooterTrackController>
-
-          <S.SidebarFooterActions>
-            <S.SidebarFooterAction>
-              <MdShuffle size={24} />
-            </S.SidebarFooterAction>
-
-            <S.SidebarFooterAction>
-              <MdSkipPrevious size={24} />
-            </S.SidebarFooterAction>
-
-            <S.SidebarFooterMainAction
-              onClick={
-                isPlaying
-                  ? () => dispatch({ type: "PAUSE" })
-                  : () => dispatch({ type: "PLAY" })
-              }
-            >
-              {isPlaying ? (
-                <MdPause size={24} color="#000" />
-              ) : (
-                <MdPlayArrow size={24} color="#000" />
-              )}
-            </S.SidebarFooterMainAction>
-
-            <S.SidebarFooterAction>
-              <MdSkipNext size={24} />
-            </S.SidebarFooterAction>
-
-            <S.SidebarFooterAction>
-              <MdOutlineRepeat size={24} />
-            </S.SidebarFooterAction>
-          </S.SidebarFooterActions>
-        </S.SidebarFooter>
+        <SidebarFooter />
       </S.SidebarContainer>
     </>
   );

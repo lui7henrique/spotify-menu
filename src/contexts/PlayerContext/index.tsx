@@ -85,13 +85,12 @@ export const PlayerContextProvider = (props: PlayerContextProviderProps) => {
   };
 
   return (
-    <PlayerContext.Provider value={{ currentPlayer, dispatch }}>
+    <PlayerContext.Provider value={{ currentPlayer, dispatch, audioRef }}>
       {currentPlayer.track && (
         <audio
           src={currentPlayer.track.preview_url}
           ref={audioRef}
           onLoadedMetadata={onLoadedMetadata}
-          onTimeUpdate={(e) => console.log(e)}
         />
       )}
 

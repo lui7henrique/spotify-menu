@@ -1,4 +1,4 @@
-import { Dispatch, ReactNode } from "react";
+import { Dispatch, MutableRefObject, ReactNode } from "react";
 import { Track } from "types/getPlaylist";
 
 export type PlayerContextProviderProps = {
@@ -7,6 +7,7 @@ export type PlayerContextProviderProps = {
 
 export type PlayerContextType = {
   currentPlayer: CurrentPlayer;
+  audioRef: MutableRefObject<HTMLAudioElement>;
   dispatch: Dispatch<PlayerAction>;
 };
 
