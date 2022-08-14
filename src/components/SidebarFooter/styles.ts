@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const SidebarFooter = styled.footer`
   width: 100%;
@@ -15,7 +15,7 @@ export const SidebarFooterActions = styled.div`
   gap: ${({ theme }) => theme.space[2]};
 `;
 
-export const SidebarFooterAction = styled.div`
+export const SidebarFooterAction = styled.div<{ isDisabled: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,9 +30,17 @@ export const SidebarFooterAction = styled.div`
   &:hover {
     background-color: ${({ theme }) => theme.colors.gray800};
   }
+
+  ${({ isDisabled }) =>
+    isDisabled &&
+    css`
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
+    `}
 `;
 
-export const SidebarFooterMainAction = styled.div`
+export const SidebarFooterMainAction = styled.div<{ isDisabled: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,4 +57,12 @@ export const SidebarFooterMainAction = styled.div`
   &:hover {
     background-color: ${({ theme }) => theme.colors.green600};
   }
+
+  ${({ isDisabled }) =>
+    isDisabled &&
+    css`
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
+    `}
 `;

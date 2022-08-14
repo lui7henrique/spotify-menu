@@ -1,6 +1,5 @@
 import { SidebarTrackController } from "components/SidebarTrackController";
 import { usePlayer } from "contexts/PlayerContext";
-import { useEffect, useState } from "react";
 
 import {
   MdOutlineRepeat,
@@ -10,7 +9,6 @@ import {
   MdSkipNext,
   MdSkipPrevious,
 } from "react-icons/md";
-import { convertDurationToTimeString } from "utils/secondsToMinutes";
 
 import * as S from "./styles";
 
@@ -23,11 +21,11 @@ export const SidebarFooter = () => {
       <SidebarTrackController />
 
       <S.SidebarFooterActions>
-        <S.SidebarFooterAction>
+        <S.SidebarFooterAction isDisabled={!currentPlayer.track}>
           <MdShuffle size={24} />
         </S.SidebarFooterAction>
 
-        <S.SidebarFooterAction>
+        <S.SidebarFooterAction isDisabled={!currentPlayer.track}>
           <MdSkipPrevious size={24} />
         </S.SidebarFooterAction>
 
@@ -37,6 +35,7 @@ export const SidebarFooter = () => {
               ? () => dispatch({ type: "PAUSE" })
               : () => dispatch({ type: "PLAY" })
           }
+          isDisabled={!currentPlayer.track}
         >
           {isPlaying ? (
             <MdPause size={24} color="#000" />
@@ -45,11 +44,11 @@ export const SidebarFooter = () => {
           )}
         </S.SidebarFooterMainAction>
 
-        <S.SidebarFooterAction>
+        <S.SidebarFooterAction isDisabled={!currentPlayer.track}>
           <MdSkipNext size={24} />
         </S.SidebarFooterAction>
 
-        <S.SidebarFooterAction>
+        <S.SidebarFooterAction isDisabled={!currentPlayer.track}>
           <MdOutlineRepeat size={24} />
         </S.SidebarFooterAction>
       </S.SidebarFooterActions>
