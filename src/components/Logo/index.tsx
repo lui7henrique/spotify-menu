@@ -11,7 +11,8 @@ export const Logo = () => {
   return (
     <Link href="/profile">
       <S.LogoContainer>
-        <FaSpotify color={green500} size={48} />
+        <FaSpotify color={green500} size={32} />
+
         <S.LogoContent>
           <S.LogoTitle>Spotify</S.LogoTitle>
           <S.LogoSubtitle>Explorer</S.LogoSubtitle>

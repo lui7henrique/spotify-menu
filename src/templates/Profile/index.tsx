@@ -1,10 +1,10 @@
 import { LayoutDefault } from "layout/Default";
-import { Playlists } from "./Playlists";
+import { Data } from "./Data";
 
 export const ProfileTemplate = () => {
   return (
-    <LayoutDefault>
-      <Playlists />
+    <LayoutDefault title="Perfil">
+      <Data />
     </LayoutDefault>
   );
 };

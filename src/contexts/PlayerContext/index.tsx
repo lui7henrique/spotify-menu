@@ -77,6 +77,8 @@ export const PlayerContextProvider = (props: PlayerContextProviderProps) => {
 
   const onLoadedMetadata = () => {
     if (audioRef.current) {
+      audioRef.current.volume = 0.05;
+
       dispatch({
         type: "UPDATE_TIME",
         payload: { duration: Number(audioRef.current.duration.toFixed(0)) },
@@ -93,7 +95,6 @@ export const PlayerContextProvider = (props: PlayerContextProviderProps) => {
           onLoadedMetadata={onLoadedMetadata}
         />
       )}
-
       {children}
     </PlayerContext.Provider>
   );

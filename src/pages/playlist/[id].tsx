@@ -5,8 +5,10 @@ import { PlaylistTemplate, PlaylistTemplateProps } from "templates/Playlist";
 type PlaylistProps = PlaylistTemplateProps;
 
 export default function PlaylistPage(props: PlaylistProps) {
+  const { playlist } = props;
+
   return (
-    <LayoutDefault>
+    <LayoutDefault title={playlist.name}>
       <PlaylistTemplate {...props} />
     </LayoutDefault>
   );

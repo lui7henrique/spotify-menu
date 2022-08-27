@@ -11,9 +11,9 @@ export const LogoContainer = styled.a`
 export const LogoContent = styled.div``;
 
 export const LogoTitle = styled.h1`
-  font-size: ${({ theme }) => theme.fontSizes["2xl"]};
+  font-size: ${({ theme }) => theme.fontSizes["lg"]};
 `;
 
 export const LogoSubtitle = styled.span`
-  font-size: ${({ theme }) => theme.fontSizes["sm"]};
+  font-size: ${({ theme }) => theme.fontSizes["xs"]};
 `;

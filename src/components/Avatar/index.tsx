@@ -1,5 +1,4 @@
 import { IconType } from "react-icons";
-import Tooltip from "rc-tooltip";
 
 import * as S from "./styles";
 

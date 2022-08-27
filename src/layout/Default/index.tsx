@@ -1,62 +1,29 @@
-import { Avatar } from "components/Avatar";
-import { Logo } from "components/Logo";
-import { Sidebar } from "components/Sidebar";
-import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import { ReactNode, useCallback } from "react";
-import { RiLogoutBoxLine } from "react-icons/ri";
+import { ReactNode } from "react";
 
 import * as S from "./styles";
+import { Header } from "components/Header";
+import Head from "next/head";
 
 type LayoutDefaultProps = {
+  title: string;
   children: ReactNode;
 };
 
 export const LayoutDefault = (props: LayoutDefaultProps) => {
-  const { children } = props;
-
-  const { data: session } = useSession();
-  const { push } = useRouter();
-
-  const logout = useCallback(async () => {
-    await push("/");
-    await signOut({ redirect: false });
-  }, []);
+  const { title, children } = props;
 
   return (
-    <S.Container>
-      <S.Main>
-        <S.Header>
-          <Logo />
+    <>
+      <Head>
+        <title>Spotify - {title}</title>
+      </Head>
 
-          <S.Profile>
-            {session?.user && (
-              <>
-                <S.ProfileInfos>
-                  <S.ProfileBasicInfos>
-                    <S.ProfileName>{session.user.name}</S.ProfileName>
-                    <S.ProfileEmail>{session.user.email}</S.ProfileEmail>
-                  </S.ProfileBasicInfos>
-                </S.ProfileInfos>
-
-                <Avatar
-                  src={session.user.image}
-                  iconButton={{
-                    icon: RiLogoutBoxLine,
-                    onClick: logout,
-                    position: "left-bottom",
-                    tooltip: "oi",
-                  }}
-                />
-              </>
-            )}
-          </S.Profile>
-        </S.Header>
-
-        <S.Content>{children}</S.Content>
-      </S.Main>
-
-      <Sidebar />
-    </S.Container>
+      <S.Container>
+        <S.Main>
+          <Header />
+          <S.Content>{children}</S.Content>
+        </S.Main>
+      </S.Container>
+    </>
   );
 };
