@@ -1,4 +1,5 @@
 import { Avatar } from "components/Avatar";
+import { HeaderNav } from "components/HeaderNav";
 import { Logo } from "components/Logo";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -20,6 +21,8 @@ export const Header = () => {
     <S.Header>
       <S.Menu>
         <Logo />
+
+        <HeaderNav />
       </S.Menu>
 
       <S.Profile>

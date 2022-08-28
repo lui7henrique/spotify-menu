@@ -6,27 +6,17 @@ export const Header = styled.header`
 
   height: ${({ theme }) => theme.components.header.height};
 
-  padding: ${({ theme }) => theme.space[8]};
-
-  border-bottom-color: ${({ theme }) => theme.colors.gray800};
+  /* border-bottom-color: ${({ theme }) => theme.colors.gray800};
   border-bottom-width: 1px;
-  border-bottom-style: solid;
+  border-bottom-style: solid; */
 
-  padding: ${({ theme }) => theme.space[8]};
+  padding: ${({ theme }) => theme.space[8]} ${({ theme }) => theme.space[4]};
 `;
 
 export const Menu = styled.div`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.space[4]};
-`;
-
-export const Nav = styled.nav`
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.space[2]};
-
-  padding-right: ${({ theme }) => theme.space[4]};
 `;
 
 export const Profile = styled.div`

@@ -6,6 +6,16 @@ export const LogoContainer = styled.a`
   gap: ${({ theme }) => theme.space[2]};
 
   cursor: pointer;
+
+  svg {
+    transition: filter 0.2s ease-in-out;
+  }
+
+  &:hover {
+    svg {
+      filter: brightness(1.2);
+    }
+  }
 `;
 
 export const LogoContent = styled.div``;

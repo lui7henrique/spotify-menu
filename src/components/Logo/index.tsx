@@ -13,10 +13,10 @@ export const Logo = () => {
       <S.LogoContainer>
         <FaSpotify color={green500} size={32} />
 
-        <S.LogoContent>
+        {/* <S.LogoContent>
           <S.LogoTitle>Spotify</S.LogoTitle>
           <S.LogoSubtitle>Explorer</S.LogoSubtitle>
-        </S.LogoContent>
+        </S.LogoContent> */}
       </S.LogoContainer>
     </Link>
   );

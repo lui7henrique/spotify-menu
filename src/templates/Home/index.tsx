@@ -33,7 +33,7 @@ export const HomeTemplate = () => {
     <S.Container>
       <Button
         label="Ver meu perfil"
-        onClick={() => push("/profile")}
+        onClick={() => push("/profile/artists")}
         leftIcon={<FiHeadphones size={20} />}
       />
     </S.Container>

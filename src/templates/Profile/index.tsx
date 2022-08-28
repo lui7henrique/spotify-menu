@@ -1,10 +1,5 @@
-import { LayoutDefault } from "layout/Default";
-import { Data } from "./Data";
+import { useFetch } from "hooks/useFetch";
 
 export const ProfileTemplate = () => {
-  return (
-    <LayoutDefault title="Perfil">
-      <Data />
-    </LayoutDefault>
-  );
+  return <h1>perfil</h1>;
 };

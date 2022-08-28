@@ -23,7 +23,7 @@ export const authOptions = {
       clientId: spotifyClientId,
       clientSecret: spotifyClientSecret,
       authorization:
-        "https://accounts.spotify.com/authorize?scope=user-read-email,playlist-read-private",
+        "https://accounts.spotify.com/authorize?scope=user-read-email,playlist-read-private,user-top-read",
     }),
   ],
   callbacks: {

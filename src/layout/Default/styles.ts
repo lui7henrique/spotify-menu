@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 `;
 
 export const Main = styled.div`
@@ -14,7 +14,4 @@ export const Main = styled.div`
   margin: 0 auto;
 `;
 
-export const Content = styled.main`
-  height: ${({ theme }) => theme.components.main.height};
-  overflow-y: auto;
-`;
+export const Content = styled.main``;

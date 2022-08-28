@@ -1,19 +1,26 @@
 import { AxiosRequestConfig } from "axios";
-import { api } from "services/api";
-import useSWR from "swr";
+import { useQuery } from "react-query";
 
-export function useFetch<Data = any, Error = any>(
+import { spotify } from "services/spotify";
+import { api as nextApi } from "services/api";
+
+export const useFetch = <T = any>(
+  keys: string[],
+  api: "spotify" | "next",
   endpoint: string,
   config?: AxiosRequestConfig
-) {
-  const { data, error, mutate } = useSWR<Data, Error>(
-    endpoint,
-    async (endpoint) => {
-      const { data } = await api.get(endpoint, config);
+) => {
+  const query = useQuery(keys, async () => {
+    if (api === "next") {
+      const { data } = await nextApi.get<T>(endpoint, config);
 
       return data;
     }
-  );
 
-  return { data, error, mutate };
-}
+    const { data } = await spotify.get<T>(endpoint, config);
+
+    return data;
+  });
+
+  return { ...query };
+};
