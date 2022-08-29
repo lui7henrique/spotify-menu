@@ -9,7 +9,10 @@ export const Container = styled.div<ContainerProps>`
   width: 100%;
 
   background-color: ${({ theme }) => theme.colors.gray1000};
-  aspect-ratio: 16 / 7;
+  aspect-ratio: 10 / 16;
+
+  border-radius: 4px;
+  overflow: hidden;
 
   background-image: ${({ src }) => `url(${src})`};
   background-position: right;
@@ -33,7 +36,7 @@ export const Container = styled.div<ContainerProps>`
 `;
 
 export const Mosaic = styled.div`
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 0px;
   padding: 0px;
   display: grid;
@@ -66,15 +69,15 @@ export const MosaiItemImage = styled(Image)`
 `;
 
 export const BannerTitle = styled.h1`
-  font-size: ${({ theme }) => theme.fontSizes["6xl"]};
+  font-size: ${({ theme }) => theme.fontSizes["5xl"]};
   font-weight: 300;
 
   z-index: 2;
 `;
 
 export const BannerSubtitle = styled.sub`
-  font-size: ${({ theme }) => theme.fontSizes["2xl"]};
-  font-weight: 200;
+  font-size: ${({ theme }) => theme.fontSizes["lg"]};
+  font-weight: 300;
 
   z-index: 2;
 `;

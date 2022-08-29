@@ -13,7 +13,7 @@ export interface Image {
   width: number;
 }
 
-export interface Item {
+export interface Artist {
   external_urls: ExternalUrls;
   followers: Followers;
   genres: string[];
@@ -27,7 +27,7 @@ export interface Item {
 }
 
 export interface GetTopArtists {
-  items: Item[];
+  items: Artist[];
   total: number;
   limit: number;
   offset: number;

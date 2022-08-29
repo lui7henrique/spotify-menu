@@ -1,6 +1,6 @@
 import * as S from "./styles";
 
-type BannerProps = {
+export type BannerProps = {
   title?: string;
   subtitle?: string;
   src?: string;
@@ -19,7 +19,7 @@ export const Banner = (props: BannerProps) => {
 
       {mosaic && (
         <S.Mosaic>
-          {mosaic.slice(0, 18).map((i) => {
+          {mosaic.slice(0, 9).map((i) => {
             const { src } = i;
 
             return (

@@ -1,3 +1,4 @@
+import { ArtistsList } from "components/ArtistsList";
 import { Banner } from "components/Banner";
 import { useFetch } from "hooks/useFetch";
 import { useMemo } from "react";
@@ -13,20 +14,8 @@ export const ArtistsTemplate = () => {
     {
       params: {
         time_range: "short_term",
-        limit: 50,
       },
     }
-  );
-
-  const shortTermMosaic = useMemo(
-    () =>
-      shortTerm?.items.map((i) => {
-        return {
-          label: i.name,
-          src: i.images[0].url,
-        };
-      }),
-    [shortTerm]
   );
 
   const { data: mediumTerm } = useFetch<GetTopArtists>(
@@ -36,20 +25,8 @@ export const ArtistsTemplate = () => {
     {
       params: {
         time_range: "medium_term",
-        limit: 50,
       },
     }
-  );
-
-  const mediumTermMosaic = useMemo(
-    () =>
-      mediumTerm?.items.map((i) => {
-        return {
-          label: i.name,
-          src: i.images[0].url,
-        };
-      }),
-    [mediumTerm]
   );
 
   const { data: longTerm } = useFetch<GetTopArtists>(
@@ -59,62 +36,29 @@ export const ArtistsTemplate = () => {
     {
       params: {
         time_range: "long_term",
-        limit: 50,
       },
     }
   );
 
-  const longTermMosaic = useMemo(
-    () =>
-      longTerm?.items.map((i) => {
-        return {
-          label: i.name,
-          src: i.images[0].url,
-        };
-      }),
-    [longTerm]
-  );
-
   return (
     <S.Container>
-      <Banner
+      <ArtistsList
+        artists={shortTerm?.items}
         title="Top artists"
-        subtitle="in short term"
-        mosaic={shortTermMosaic}
+        subtitle="in short term (last 4 weeks)"
       />
 
-      <div>
-        <h1>Short term</h1>
-        {shortTerm?.items.map((i) => {
-          return <div>- {i.name}</div>;
-        })}
-      </div>
-
-      <Banner
+      <ArtistsList
+        artists={mediumTerm?.items}
         title="Top artists"
-        subtitle="in medium term"
-        mosaic={mediumTermMosaic}
+        subtitle="in medium term (last 6 months)"
       />
 
-      <div>
-        <h1>Medium term</h1>
-        {mediumTerm?.items.map((i) => {
-          return <div>- {i.name}</div>;
-        })}
-      </div>
-
-      <Banner
+      <ArtistsList
+        artists={longTerm?.items}
         title="Top artists"
-        subtitle="in long term"
-        mosaic={longTermMosaic}
+        subtitle="in long term (all time)"
       />
-
-      <div>
-        <h1>Long Term</h1>
-        {longTerm?.items.map((i) => {
-          return <div>- {i.name}</div>;
-        })}
-      </div>
     </S.Container>
   );
 };
