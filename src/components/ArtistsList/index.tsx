@@ -48,7 +48,7 @@ export const ArtistsList = (props: ArtistsListProps) => {
             <S.ArtistItem key={id}>
               <S.ArtistFigure>
                 <S.ArtistImage
-                  src={images[1].url}
+                  src={images[1].url || images[0].url}
                   layout="fill"
                   draggable="false"
                 />

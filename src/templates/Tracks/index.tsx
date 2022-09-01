@@ -1,16 +1,17 @@
 import { ArtistsList } from "components/ArtistsList";
-import { Banner } from "components/Banner";
-import { Skeleton } from "components/Skeleton";
+
 import { Tab, Tabs } from "components/Tabs";
+import { TracksList } from "components/TracksList";
 import { useFetch } from "hooks/useFetch";
 import { useMemo } from "react";
 import { GetTopArtists } from "types/getTopArtists";
+import { GetTopTracks } from "types/getTopTracks";
 
 import * as S from "./styles";
 
-export const ArtistsTemplate = () => {
+export const TracksTemplate = () => {
   const { data: shortTerm, isLoading: shortTermIsLoading } =
-    useFetch<GetTopArtists>(["short_term"], "next", "/me/top/artists", {
+    useFetch<GetTopTracks>(["shortTerm"], "next", "/me/top/tracks", {
       params: {
         time_range: "short_term",
         limit: 50,
@@ -18,7 +19,7 @@ export const ArtistsTemplate = () => {
     });
 
   const { data: mediumTerm, isLoading: mediumTermIsLoading } =
-    useFetch<GetTopArtists>(["mediumTerm"], "next", "/me/top/artists", {
+    useFetch<GetTopTracks>(["mediumTerm"], "next", "/me/top/tracks", {
       params: {
         time_range: "medium_term",
         limit: 50,
@@ -26,7 +27,7 @@ export const ArtistsTemplate = () => {
     });
 
   const { data: longTerm, isLoading: longTermIsLoading } =
-    useFetch<GetTopArtists>(["longTerm"], "next", "/me/top/artists", {
+    useFetch<GetTopTracks>(["longTerm"], "next", "/me/top/tracks", {
       params: {
         time_range: "long_term",
         limit: 50,
@@ -39,8 +40,8 @@ export const ArtistsTemplate = () => {
         key: "short-term",
         label: "4 Weeks",
         panel: (
-          <ArtistsList
-            artists={shortTerm?.items}
+          <TracksList
+            tracks={shortTerm?.items}
             isLoading={shortTermIsLoading}
           />
         ),
@@ -49,8 +50,8 @@ export const ArtistsTemplate = () => {
         key: "medium-term",
         label: "6 Months",
         panel: (
-          <ArtistsList
-            artists={mediumTerm?.items}
+          <TracksList
+            tracks={mediumTerm?.items}
             isLoading={mediumTermIsLoading}
           />
         ),
@@ -59,10 +60,7 @@ export const ArtistsTemplate = () => {
         key: "long-term",
         label: "All time",
         panel: (
-          <ArtistsList
-            artists={longTerm?.items}
-            isLoading={longTermIsLoading}
-          />
+          <TracksList tracks={longTerm?.items} isLoading={longTermIsLoading} />
         ),
       },
     ];
@@ -75,6 +73,8 @@ export const ArtistsTemplate = () => {
     mediumTermIsLoading,
     longTermIsLoading,
   ]);
+
+  console.log({ shortTerm, mediumTerm, longTerm });
 
   return (
     <S.Container>

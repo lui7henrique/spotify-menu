@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 type SkeletonProps = {
   height?: number | string;
   width?: number | string;
+  square?: boolean;
 };
 
 const skeletonKeyframes = keyframes`
@@ -37,7 +38,8 @@ export const Skeleton = styled.div<SkeletonProps>`
       background-position: 40rem 0;
     }
   }
-  border-radius: 4px;
+
+  border-radius: ${({ square }) => (square ? "0px" : "4px")};
 `;
 
 export const PictureSkeleton = styled(Skeleton)`
