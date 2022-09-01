@@ -13,7 +13,6 @@ export const useFetch = <T = any>(
   const query = useQuery(keys, async () => {
     if (api === "next") {
       const { data } = await nextApi.get<T>(endpoint, config);
-
       return data;
     }
 

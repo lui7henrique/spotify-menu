@@ -1,48 +1,61 @@
-import { Banner, BannerProps } from "components/Banner";
-import { useMemo } from "react";
+import Aos from "aos";
+import { PictureSkeleton, Skeleton } from "components/Skeleton";
+import { useEffect } from "react";
 import { Artist } from "types/getTopArtists";
 import * as S from "./styles";
 
 type ArtistsListProps = {
   artists?: Artist[];
-} & Pick<BannerProps, "subtitle" | "title">;
+  isLoading?: boolean;
+};
 
 export const ArtistsList = (props: ArtistsListProps) => {
-  const { artists, ...bannerProps } = props;
+  const { artists, isLoading } = props;
 
-  const mosaic = useMemo(
-    () =>
-      artists?.map((i) => {
-        return {
-          label: i.name,
-          src: i.images[0].url,
-        };
-      }),
-    [artists]
-  );
+  if (isLoading) {
+    return (
+      <S.Container>
+        <S.ArtistsList>
+          {Array.from({ length: 50 }).map((_, index) => {
+            return (
+              <S.ArtistItem key={index}>
+                <S.ArtistFigure>
+                  <PictureSkeleton />
+                </S.ArtistFigure>
+
+                <S.ArtistIndex>
+                  <Skeleton width="15px" height="16px" />
+                </S.ArtistIndex>
+
+                <S.ArtistInfos>
+                  <Skeleton width="80%" height="16px" />
+                </S.ArtistInfos>
+              </S.ArtistItem>
+            );
+          })}
+        </S.ArtistsList>
+      </S.Container>
+    );
+  }
 
   return (
     <S.Container>
-      <S.BannerContainer>
-        <Banner mosaic={mosaic} {...bannerProps} />
-      </S.BannerContainer>
-
       <S.ArtistsList>
         {artists?.map((a, index) => {
-          const { name, images, genres } = a;
+          const { name, images, genres, id } = a;
 
           return (
-            <S.ArtistItem>
+            <S.ArtistItem key={id}>
               <S.ArtistFigure>
                 <S.ArtistImage
-                  src={images[0].url}
+                  src={images[1].url}
                   layout="fill"
                   draggable="false"
                 />
               </S.ArtistFigure>
 
               <S.ArtistIndex>
-                {String(index + 1).padStart(2, "0")}
+                {String(index + 1).padStart(2, "0")}.
               </S.ArtistIndex>
 
               <S.ArtistInfos>

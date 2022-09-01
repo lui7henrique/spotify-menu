@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import * as S from "./styles";
 
 type NavItem = {
@@ -15,15 +15,19 @@ export const HeaderNav = () => {
     (): NavItem[] => [
       {
         href: "/profile/artists",
-        label: "Top artists",
+        label: "Artists",
+      },
+      {
+        href: "/profile/tracks",
+        label: "Tracks",
       },
       {
         href: "/profile/genres",
-        label: "Top genres",
+        label: "Genres",
       },
       {
         href: "/profile/albums",
-        label: "Top albums",
+        label: "Albums",
       },
     ],
     []
