@@ -5,8 +5,6 @@ export const LogoContainer = styled.a`
   align-items: center;
   gap: ${({ theme }) => theme.space[2]};
 
-  cursor: pointer;
-
   svg {
     transition: filter 0.2s ease-in-out;
   }

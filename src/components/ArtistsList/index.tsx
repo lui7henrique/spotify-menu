@@ -42,16 +42,18 @@ export const ArtistsList = (props: ArtistsListProps) => {
     <S.Container>
       <S.ArtistsList>
         {artists?.map((a, index) => {
-          const { name, images, genres, id } = a;
+          const { name, images, id } = a;
 
           return (
             <S.ArtistItem key={id}>
               <S.ArtistFigure>
-                <S.ArtistImage
-                  src={images[1].url || images[0].url}
-                  layout="fill"
-                  draggable="false"
-                />
+                {images && (
+                  <S.ArtistImage
+                    src={images[1].url || images[0].url}
+                    layout="fill"
+                    draggable="false"
+                  />
+                )}
               </S.ArtistFigure>
 
               <S.ArtistIndex>
